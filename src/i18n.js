@@ -13,7 +13,7 @@ export const translations = {
       eyebrow: 'développeur junior',
       title1: 'Étudiant en dernière année de Bachelier,',
       title2: 'en quête du monde professionnel',
-      sub: "Jeune développeur aux portes du monde professionnel, je suis de nature curieuse et j’aime apprendre de nouvelles choses. Autonome et débrouillard, je sais également m’intégrer facilement au sein d’une équipe.",
+      sub: "Jeune développeur aux portes du monde professionnel, je suis de nature curieux et j’aime apprendre de nouvelles choses. Autonome et débrouillard, je sais également m’intégrer facilement au sein d’une équipe.",
       ctaProjects: 'voir les projets',
       ctaContact: 'me contacter',
       ctaResume: 'télécharger mon CV',
