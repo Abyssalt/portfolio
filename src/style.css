@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f6fa;
+  --bg-card: #ffffff;
+  --border: #e6e8f0;
+  --border-light: #d3d7e3;
+  --text: #14161f;
+  --text-dim: #565b6b;
+  --text-faint: #8b8fa3;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-tint: #eeecfd;
+  --ok: #16a34a;
+  --ok-tint: #dcfce7;
+  --warn: #d97706;
+  --warn-tint: #fef3c7;
+
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0c10;
+  --bg-alt: #121319;
+  --bg-card: #14161d;
+  --border: #22242e;
+  --border-light: #2e313d;
+  --text: #f1f2f6;
+  --text-dim: #a8acbb;
+  --text-faint: #6d7183;
+  --accent: #818cf8;
+  --accent-hover: #9aa3f9;
+  --accent-tint: rgba(129, 140, 248, 0.14);
+  --ok: #34d399;
+  --ok-tint: rgba(52, 211, 153, 0.14);
+  --warn: #f2b84b;
+  --warn-tint: rgba(242, 184, 75, 0.14);
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 18.5px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#app { min-height: 100vh; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+section {
+  padding: 84px 0;
+  border-bottom: 1px solid var(--border);
+}
+section:last-of-type { border-bottom: none; }
+
+h1, h2, h3 {
+  font-family: var(--sans);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(28px, 3.8vw, 36px);
+  margin-bottom: 12px;
+}
+
+.section-head { margin-bottom: 40px; max-width: 60ch; }
+.section-head p { margin: 0; }
+
+p { line-height: 1.7; color: var(--text); font-size: 18.5px; }
+
+@media (max-width: 640px) {
+  section { padding: 56px 0; }
+}
