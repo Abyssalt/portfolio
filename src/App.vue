@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import ProjectCard from './components/ProjectCard.vue'
 import TechChip from './components/TechChip.vue'
 import { useTheme } from './composables/useTheme'
@@ -56,11 +56,25 @@ const education = computed(() =>
   }))
 )
 
+const DISCORD_USERNAME = 'abyssalt_'
+
+const copiedKey = ref(null)
+
+function copyDiscord() {
+  navigator.clipboard.writeText(DISCORD_USERNAME).then(() => {
+    copiedKey.value = 'discord'
+    setTimeout(() => {
+      copiedKey.value = null
+    }, 1800)
+  })
+}
+
 const contactLinks = computed(() => [
-  { key: 'email', href: 'mailto:melvynpauldev@proton.me', label: t.value.contact.email, icon: 'mail' },
-  { key: 'github', href: 'https://github.com/Abyssalt', label: t.value.contact.github, icon: 'https://cdn.simpleicons.org/github' },
-  { key: 'linkedin', href: 'https://www.linkedin.com/in/melvyn-paul-4a584b42a/', label: t.value.contact.linkedin, icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg' },
-  { key: 'instagram', href: 'https://www.instagram.com/melvyn.paul/', label: t.value.contact.instagram, icon: 'https://cdn.simpleicons.org/instagram' },
+  { key: 'email', type: 'link', href: 'mailto:melvynpauldev@proton.me', label: t.value.contact.email, icon: 'mail' },
+  { key: 'github', type: 'link', href: 'https://github.com/Abyssalt', label: t.value.contact.github, icon: 'https://cdn.simpleicons.org/github' },
+  { key: 'linkedin', type: 'link', href: 'https://www.linkedin.com/in/melvyn-paul-4a584b42a/', label: t.value.contact.linkedin, icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg' },
+  { key: 'instagram', type: 'link', href: 'https://www.instagram.com/melvyn.paul/', label: t.value.contact.instagram, icon: 'https://cdn.simpleicons.org/instagram' },
+  { key: 'discord', type: 'copy', label: copiedKey.value === 'discord' ? t.value.contact.discordCopied : `${DISCORD_USERNAME}`, icon: 'https://cdn.simpleicons.org/discord' },
 ])
 </script>
 
@@ -175,13 +189,17 @@ const contactLinks = computed(() => [
       <h2>{{ t.contact.title }}</h2>
       <p class="contact-text">{{ t.contact.text }}</p>
       <div class="contact-links">
-        <a
+        <component
+          :is="c.type === 'copy' ? 'button' : 'a'"
           v-for="c in contactLinks"
           :key="c.key"
-          :href="c.href"
+          :type="c.type === 'copy' ? 'button' : undefined"
+          :href="c.type === 'copy' ? undefined : c.href"
           class="contact-link"
-          :target="c.key === 'email' ? null : '_blank'"
-          :rel="c.key === 'email' ? null : 'noopener'"
+          :class="{ copied: c.key === 'discord' && copiedKey === 'discord' }"
+          :target="c.type === 'copy' || c.key === 'email' ? null : '_blank'"
+          :rel="c.type === 'copy' || c.key === 'email' ? null : 'noopener'"
+          @click="c.type === 'copy' ? copyDiscord() : null"
         >
           <span class="contact-icon">
             <svg v-if="c.icon === 'mail'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
@@ -191,7 +209,7 @@ const contactLinks = computed(() => [
             <img v-else :src="c.icon" :alt="c.label" />
           </span>
           {{ c.label }}
-        </a>
+        </component>
       </div>
     </div>
   </footer>
@@ -380,13 +398,17 @@ footer { padding: 60px 0 60px; }
   padding: 10px 18px 10px 10px;
   border: 1px solid var(--border);
   border-radius: 30px;
+  background: none;
   color: var(--text);
   text-decoration: none;
+  font-family: inherit;
   font-size: 15px;
   font-weight: 600;
+  cursor: pointer;
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 .contact-link:hover { border-color: var(--accent); background: var(--accent-tint); }
+.contact-link.copied { border-color: var(--ok); background: var(--ok-tint); color: var(--ok); }
 
 .contact-icon {
   display: inline-flex;

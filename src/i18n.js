@@ -58,6 +58,8 @@ export const translations = {
       github: 'GitHub',
       linkedin: 'LinkedIn',
       instagram: 'Instagram',
+      discord: 'Discord',
+      discordCopied: 'Pseudo copié !',
     },
   },
   en: {
@@ -119,6 +121,8 @@ export const translations = {
       github: 'GitHub',
       linkedin: 'LinkedIn',
       instagram: 'Instagram',
+      discord: 'Discord',
+      discordCopied: 'Username copied!',
     },
   },
 }
