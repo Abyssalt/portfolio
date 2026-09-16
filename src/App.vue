@@ -117,7 +117,7 @@ const contactLinks = computed(() => [
     </div>
   </section>
 
-  <section class="about">
+  <section id="apropos" class="about">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">{{ t.about.eyebrow }}</p>
