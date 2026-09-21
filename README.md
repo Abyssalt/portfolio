@@ -41,4 +41,4 @@ src/
 1. Cloner le projet
 2. Se placer dans le même dossier que le fichier `docker-compose.yml`
 3. Lancer la commande `docker compose up -d`
-4. Accéder à l'url `localhost:5173`
+4. Accéder à l'url `localhost:5173`.
