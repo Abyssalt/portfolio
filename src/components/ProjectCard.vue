@@ -18,6 +18,7 @@ const props = defineProps({
   screenshots: { type: Array, default: () => [] },
   screenshotsLabel: String,
   backLabel: String,
+  wide: Boolean, // last card of an odd-sized grid: spans the full row
 })
 
 const flipped = ref(false)
@@ -31,7 +32,7 @@ function openScreenshots() {
 </script>
 
 <template>
-  <div class="card-flip" :class="{ flipped }">
+  <div class="card-flip" :class="{ flipped, wide }">
     <div class="card-flip-inner">
       <article class="card-face card-front">
         <header class="card-head">
@@ -54,7 +55,7 @@ function openScreenshots() {
           <TechChip v-for="s in stack" :key="s" :name="s" />
         </div>
 
-        <div class="card-footer">
+        <div v-if="link || articleLink || screenshots.length" class="card-footer">
           <div class="card-links">
             <a v-if="link" :href="link" class="link" target="_blank" rel="noopener">{{ linkLabel }}</a>
             <a v-if="articleLink" :href="articleLink" class="link" target="_blank" rel="noopener">{{ articleLabel }}</a>
@@ -106,10 +107,12 @@ function openScreenshots() {
 <style scoped>
 .card-flip {
   perspective: 1600px;
+  height: 100%; /* cards of a row share the same height */
 }
 
 .card-flip-inner {
   position: relative;
+  height: 100%;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
 }
@@ -125,6 +128,12 @@ function openScreenshots() {
   padding: 26px 24px 24px;
   backface-visibility: hidden;
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card-front {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-flip:not(.flipped) .card-front:hover {
@@ -225,6 +234,8 @@ function openScreenshots() {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  margin-top: auto; /* links and screenshots button sit on the same line in every card */
+  padding-top: 4px;
 }
 
 .card-links {
@@ -337,6 +348,28 @@ function openScreenshots() {
 }
 .shot-dot:hover::before { background: var(--text-faint); }
 .shot-dot.active::before { background: var(--accent); transform: scale(1.2); }
+
+/* A lone last card spans the whole row: the intro on the left, the achievements on the right. */
+.card-flip.wide { grid-column: 1 / -1; }
+
+@media (min-width: 801px) {
+  .card-flip.wide .card-front {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'head tasks'
+      'summary tasks'
+      'stack tasks'
+      'footer footer';
+    column-gap: 48px;
+    grid-template-rows: auto auto 1fr auto;
+  }
+  .card-flip.wide .card-head { grid-area: head; }
+  .card-flip.wide .summary { grid-area: summary; }
+  .card-flip.wide .tasks { grid-area: tasks; align-self: start; margin-top: 4px; }
+  .card-flip.wide .stack { grid-area: stack; align-self: start; }
+  .card-flip.wide .card-footer { grid-area: footer; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .card-flip-inner { transition: none; }

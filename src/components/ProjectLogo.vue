@@ -11,8 +11,21 @@ defineProps({
     <img v-if="id === 'kinestat'" :src="kinestatLogo" alt="Logo KineStat" />
 
     <svg v-else-if="id === 'cyberquiz'" viewBox="0 0 108 108" role="img" aria-label="Logo CyberQuiz">
-      <rect width="108" height="108" rx="24" fill="#232C71" />
-      <path fill="#A5D6E8" d="M38,28 L64,54 L38,80 L30,80 L52,54 L30,28 Z" />
+      <defs>
+        <linearGradient id="cyberquiz-logo-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2C3687" />
+          <stop offset="1" stop-color="#1A2058" />
+        </linearGradient>
+      </defs>
+      <rect width="108" height="108" rx="24" fill="url(#cyberquiz-logo-bg)" />
+      <path
+        d="M42,32 L66,54 L42,76"
+        fill="none"
+        stroke="#A5D6E8"
+        stroke-width="11"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
 
     <svg v-else viewBox="0 0 108 108" role="img" aria-label="Logo générique">

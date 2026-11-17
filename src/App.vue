@@ -160,7 +160,12 @@ const contactLinks = computed(() => [
         <h2>{{ t.projectsSection.title }}</h2>
       </div>
       <div class="grid">
-        <ProjectCard v-for="p in projects" :key="p.id" v-bind="p" />
+        <ProjectCard
+          v-for="(p, i) in projects"
+          :key="p.id"
+          v-bind="p"
+          :wide="projects.length % 2 === 1 && i === projects.length - 1"
+        />
       </div>
     </div>
   </section>
