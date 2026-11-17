@@ -7,8 +7,7 @@ import Lightbox from './Lightbox.vue'
 const props = defineProps({
   id: String,
   name: String,
-  status: String, // 'deployed' | 'progress' | 'school'
-  statusLabel: String,
+  statuses: { type: Array, default: () => [] }, // [{ key: 'deployed' | 'progress' | 'school', label }]
   stack: Array,
   summary: String,
   tasks: Array,
@@ -39,7 +38,9 @@ function openScreenshots() {
           <ProjectLogo :id="id" />
           <div class="card-title">
             <h3>{{ name }}</h3>
-            <span class="status" :class="status">{{ statusLabel }}</span>
+            <div class="statuses">
+              <span v-for="s in statuses" :key="s.key" class="status" :class="s.key">{{ s.label }}</span>
+            </div>
           </div>
         </header>
 
@@ -156,6 +157,12 @@ function openScreenshots() {
 
 .card-title h3 {
   font-size: 20px;
+}
+
+.statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .status {

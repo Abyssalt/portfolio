@@ -12,7 +12,7 @@ import cyberquiz4 from '../assets/screenshots/cyberquiz/4.png'
 export const projects = [
   {
     id: 'kinestat',
-    status: 'deployed',
+    status: ['deployed', 'school'],
     stack: {
       fr: ['C#', 'ASP.NET Core', 'Entity Framework', 'PostgreSQL', 'IIS', 'Docker'],
       en: ['C#', 'ASP.NET Core', 'Entity Framework', 'PostgreSQL', 'IIS', 'Docker'],
@@ -40,7 +40,7 @@ export const projects = [
   },
   {
     id: 'cyberquiz',
-    status: 'deployed',
+    status: ['deployed'],
     stack: {
       fr: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Firebase'],
       en: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Firebase'],
@@ -69,7 +69,7 @@ export const projects = [
   },
   {
     id: 'student-tracking',
-    status: 'school',
+    status: ['school'],
     stack: {
       fr: ['Java', 'Spring Boot', 'MySQL', "Travail d'équipe (6)"],
       en: ['Java', 'Spring Boot', 'MySQL', 'Team of 6'],

@@ -22,8 +22,7 @@ const projects = computed(() =>
   rawProjects.map((p) => ({
     id: p.id,
     name: p.name[locale.value],
-    status: p.status,
-    statusLabel: t.value.status[p.status],
+    statuses: p.status.map((key) => ({ key, label: t.value.status[key] })),
     stack: p.stack[locale.value],
     summary: p.summary[locale.value],
     tasks: p.tasks[locale.value],
