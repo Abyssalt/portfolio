@@ -41,6 +41,7 @@ export const translations = {
     },
     projectCard: {
       viewRepo: 'Voir le dépôt →',
+      viewPlayStore: 'Voir sur le Play Store →',
       readArticle: "Lire l'article →",
       viewScreenshots: 'Voir les captures',
       back: 'Retour',
@@ -104,6 +105,7 @@ export const translations = {
     },
     projectCard: {
       viewRepo: 'View repository →',
+      viewPlayStore: 'View on Google Play →',
       readArticle: 'Read the article →',
       viewScreenshots: 'View screenshots',
       back: 'Back',

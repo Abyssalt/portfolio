@@ -28,7 +28,7 @@ const projects = computed(() =>
     summary: p.summary[locale.value],
     tasks: p.tasks[locale.value],
     link: p.link,
-    linkLabel: t.value.projectCard.viewRepo,
+    linkLabel: p.linkType === 'playStore' ? t.value.projectCard.viewPlayStore : t.value.projectCard.viewRepo,
     articleLink: p.articleLink,
     articleLabel: t.value.projectCard.readArticle,
     screenshots: p.screenshots,
