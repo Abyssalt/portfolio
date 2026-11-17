@@ -40,7 +40,7 @@ export const projects = [
   },
   {
     id: 'cyberquiz',
-    status: 'progress',
+    status: 'deployed',
     stack: {
       fr: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Firebase'],
       en: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Firebase'],
