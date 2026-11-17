@@ -11,7 +11,44 @@ import cyberquiz4 from '../assets/screenshots/cyberquiz/4.png'
 
 export const projects = [
   {
+    id: 'cyberquiz',
+    fileName: 'CyberQuiz.kt',
+    language: 'Kotlin',
+    status: ['deployed'],
+    stack: {
+      fr: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Coroutines / Flow', 'DataStore', 'Firebase', 'AdMob'],
+      en: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Coroutines / Flow', 'DataStore', 'Firebase', 'AdMob'],
+    },
+    link: 'https://play.google.com/store/apps/details?id=com.cyberquiz.app',
+    linkType: 'playStore',
+    articleLink: '',
+    screenshots: [cyberquiz1, cyberquiz2, cyberquiz3, cyberquiz4],
+    screenshotsLayout: 'phones', // phone screens side by side instead of one large picture
+    screenshotsFeatured: [0, 2, 3], // which of them are shown inline (all stay in the lightbox)
+    name: { fr: 'CyberQuiz', en: 'CyberQuiz' },
+    summary: {
+      fr: 'Application Android de quiz (programmation, réseaux, cybersécurité), développée en solo et publiée sur Google Play : des centaines de questions dans plusieurs langues, défi quotidien, mode infini et statistiques.',
+      en: 'Android quiz application (programming, networking, cybersecurity), developed solo and published on Google Play: hundreds of questions in several languages, daily challenge, infinite mode and statistics.',
+    },
+    tasks: {
+      fr: [
+        "Architecture Clean Architecture / MVVM avec Room, Hilt, DataStore et Navigation Compose",
+        "Système d'import de contenu par fichiers JSON, multilingue : ajouter une catégorie ou une langue ne demande aucun changement de code",
+        "Intégration d'AdMob avec consentement RGPD (Google UMP), Firebase Analytics et Crashlytics",
+        'Publication sur Google Play : test fermé, puis production',
+      ],
+      en: [
+        'Clean Architecture / MVVM with Room, Hilt, DataStore and Navigation Compose',
+        'JSON-based multilingual content import system: adding a category or a language needs no code change',
+        'Integrated AdMob with GDPR consent (Google UMP), Firebase Analytics and Crashlytics',
+        'Published on Google Play: closed testing, then production',
+      ],
+    },
+  },
+  {
     id: 'kinestat',
+    fileName: 'KineStat.cs',
+    language: 'C#',
     status: ['deployed', 'school'],
     stack: {
       fr: ['C#', 'ASP.NET Core', 'Entity Framework', 'PostgreSQL', 'IIS', 'Docker'],
@@ -39,38 +76,9 @@ export const projects = [
     },
   },
   {
-    id: 'cyberquiz',
-    status: ['deployed'],
-    stack: {
-      fr: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Coroutines / Flow', 'DataStore', 'Firebase', 'AdMob'],
-      en: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Coroutines / Flow', 'DataStore', 'Firebase', 'AdMob'],
-    },
-    link: 'https://play.google.com/store/apps/details?id=com.cyberquiz.app',
-    linkType: 'playStore',
-    articleLink: '',
-    screenshots: [cyberquiz1, cyberquiz2, cyberquiz3, cyberquiz4],
-    name: { fr: 'CyberQuiz', en: 'CyberQuiz' },
-    summary: {
-      fr: 'Application Android de quiz (programmation, réseaux, cybersécurité), développée en solo et publiée sur Google Play : des centaines de questions dans plusieurs langues, défi quotidien, mode infini et statistiques.',
-      en: 'Android quiz application (programming, networking, cybersecurity), developed solo and published on Google Play: hundreds of questions in several languages, daily challenge, infinite mode and statistics.',
-    },
-    tasks: {
-      fr: [
-        "Architecture Clean Architecture / MVVM avec Room, Hilt, DataStore et Navigation Compose",
-        "Système d'import de contenu par fichiers JSON, multilingue : ajouter une catégorie ou une langue ne demande aucun changement de code",
-        "Intégration d'AdMob avec consentement RGPD (Google UMP), Firebase Analytics et Crashlytics",
-        'Publication sur Google Play : test fermé, puis production',
-      ],
-      en: [
-        'Clean Architecture / MVVM with Room, Hilt, DataStore and Navigation Compose',
-        'JSON-based multilingual content import system: adding a category or a language needs no code change',
-        'Integrated AdMob with GDPR consent (Google UMP), Firebase Analytics and Crashlytics',
-        'Published on Google Play: closed testing, then production',
-      ],
-    },
-  },
-  {
     id: 'student-tracking',
+    fileName: 'SuiviEtudiants.java',
+    language: 'Java',
     status: ['school'],
     stack: {
       fr: ['Java', 'Spring Boot', 'MySQL', "Travail d'équipe (6)"],

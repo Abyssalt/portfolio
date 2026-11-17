@@ -16,7 +16,7 @@ src/
   main.js
 
   components/
-    ProjectCard.vue          
+    ProjectShowcase.vue     → les projets : onglets façon éditeur de code
     ProjectLogo.vue          
     TechChip.vue             
     Lightbox.vue             → visualiseur plein écran des captures

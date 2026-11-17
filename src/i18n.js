@@ -45,6 +45,7 @@ export const translations = {
       readArticle: "Lire l'article →",
       viewScreenshots: 'Voir les captures',
       back: 'Retour',
+      tabsLabel: 'Projets',
     },
     status: {
       deployed: 'Production',
@@ -109,6 +110,7 @@ export const translations = {
       readArticle: 'Read the article →',
       viewScreenshots: 'View screenshots',
       back: 'Back',
+      tabsLabel: 'Projects',
     },
     status: {
       deployed: 'Production',

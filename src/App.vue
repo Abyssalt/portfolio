@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import ProjectCard from './components/ProjectCard.vue'
+import ProjectShowcase from './components/ProjectShowcase.vue'
 import TechChip from './components/TechChip.vue'
 import { useTheme } from './composables/useTheme'
 import { useLocale } from './composables/useLocale'
@@ -21,6 +21,8 @@ const resumeUrl = computed(
 const projects = computed(() =>
   rawProjects.map((p) => ({
     id: p.id,
+    fileName: p.fileName,
+    language: p.language,
     name: p.name[locale.value],
     statuses: p.status.map((key) => ({ key, label: t.value.status[key] })),
     stack: p.stack[locale.value],
@@ -31,8 +33,8 @@ const projects = computed(() =>
     articleLink: p.articleLink,
     articleLabel: t.value.projectCard.readArticle,
     screenshots: p.screenshots,
-    screenshotsLabel: t.value.projectCard.viewScreenshots,
-    backLabel: t.value.projectCard.back,
+    screenshotsLayout: p.screenshotsLayout,
+    screenshotsFeatured: p.screenshotsFeatured,
   }))
 )
 
@@ -159,14 +161,7 @@ const contactLinks = computed(() => [
         <p class="eyebrow">{{ t.projectsSection.eyebrow }}</p>
         <h2>{{ t.projectsSection.title }}</h2>
       </div>
-      <div class="grid">
-        <ProjectCard
-          v-for="(p, i) in projects"
-          :key="p.id"
-          v-bind="p"
-          :wide="projects.length % 2 === 1 && i === projects.length - 1"
-        />
-      </div>
+      <ProjectShowcase :projects="projects" :tabs-label="t.projectCard.tabsLabel" />
     </div>
   </section>
 
@@ -373,11 +368,6 @@ a.education-school:hover { color: var(--accent); }
 a.education-school svg { color: var(--text-faint); flex-shrink: 0; }
 a.education-school:hover svg { color: var(--accent); }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
 
 .skills { display: flex; flex-direction: column; gap: 32px; }
 .skill-group h3 {
@@ -429,7 +419,6 @@ footer { padding: 60px 0 60px; }
 .contact-icon img { width: 20px; height: 20px; object-fit: contain; }
 
 @media (max-width: 800px) {
-  .grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
 
