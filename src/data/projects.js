@@ -45,7 +45,7 @@ export const projects = [
       fr: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Firebase'],
       en: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'Firebase'],
     },
-    link: '',
+    link: 'https://play.google.com/store/apps/details?id=com.cyberquiz.app',
     articleLink: '',
     screenshots: [cyberquiz1, cyberquiz2, cyberquiz3, cyberquiz4],
     name: { fr: 'CyberQuiz', en: 'CyberQuiz' },
