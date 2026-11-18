@@ -168,20 +168,20 @@ function openShot(index) {
   height: 100%;
   min-height: 340px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 36px 26px 0;
+  gap: 10px;
+  padding: 40px 22px;
   overflow: hidden;
 }
-.phone { width: 31%; max-width: 230px; padding: 0; border: none; background: none; cursor: zoom-in; display: block; }
-.phone:nth-child(2) { width: 34%; max-width: 250px; transform: translateY(-14px); }
+.phone { flex: 1 1 0; min-width: 0; max-width: 250px; padding: 0; border: none; background: none; cursor: zoom-in; display: block; }
+.phone:nth-child(2) { flex-grow: 1.12; max-width: 280px; transform: translateY(-14px); }
 .phone img {
   display: block;
   width: 100%;
-  border-radius: 14px 14px 0 0;
+  border-radius: 14px;
   border: 1px solid var(--border-light);
-  border-bottom: none;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s ease;
 }
 .phone:hover img { transform: translateY(-4px); }
