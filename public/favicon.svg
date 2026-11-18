@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
-  <rect width="108" height="108" rx="24" fill="#232C71" />
-  <path fill="#A5D6E8" d="M38,28 L64,54 L38,80 L30,80 L52,54 L30,28 Z" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="CyberQuiz app icon (circle)"><title>CyberQuiz app icon (circle)</title><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C3687"/><stop offset="1" stop-color="#1A2058"/></linearGradient><linearGradient id="bgd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C3687"/><stop offset="1" stop-color="#1A2058"/></linearGradient></defs><circle cx="512" cy="512" r="512" fill="url(#bg)"/><path d="M-12,-22L12,0L-12,22" transform="translate(512 512) scale(9.48148)" fill="none" stroke="#A5D6E8" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
