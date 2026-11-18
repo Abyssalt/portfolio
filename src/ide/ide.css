@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* Les variables portent les mêmes noms que celles du site, pour réutiliser ses composants tels quels. */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f6fa;
+  --bg-card: #ffffff;
+  --border: #e6e8f0;
+  --border-light: #d3d7e3;
+  --text: #14161f;
+  --text-dim: #565b6b;
+  --text-faint: #8b8fa3;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-tint: #eeecfd;
+  --ok: #16a34a;
+  --ok-tint: #dcfce7;
+  --warn: #d97706;
+  --warn-tint: #fef3c7;
+
+  --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* chrome de l'IDE */
+  --ide-title: #e9ebf4;
+  --ide-activity: #e1e4f0;
+  --ide-sidebar: #f5f6fa;
+  --ide-tabs: #ebedf5;
+  --ide-status: #4f46e5;
+  --ide-status-text: #ffffff;
+  --ide-hover: rgba(20, 22, 31, 0.06);
+  --ide-select: #e3e1fb;
+  --ide-line-hover: rgba(20, 22, 31, 0.04);
+  --ide-shadow: 0 8px 28px rgba(20, 22, 31, 0.18);
+
+  /* coloration syntaxique (Light+) */
+  --syn-kw: #0000ff;
+  --syn-str: #a31515;
+  --syn-com: #008000;
+  --syn-type: #267f99;
+  --syn-fn: #795e26;
+  --syn-prop: #001080;
+  --syn-num: #098658;
+  --syn-link: #0451a5;
+  --syn-head: #800000;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #14161d;
+  --bg-alt: #101218;
+  --bg-card: #181a22;
+  --border: #23252f;
+  --border-light: #2e313d;
+  --text: #e6e8ef;
+  --text-dim: #a8acbb;
+  --text-faint: #6d7183;
+  --accent: #818cf8;
+  --accent-hover: #9aa3f9;
+  --accent-tint: rgba(129, 140, 248, 0.14);
+  --ok: #34d399;
+  --ok-tint: rgba(52, 211, 153, 0.14);
+  --warn: #f2b84b;
+  --warn-tint: rgba(242, 184, 75, 0.14);
+
+  --ide-title: #0b0c10;
+  --ide-activity: #0b0c10;
+  --ide-sidebar: #101218;
+  --ide-tabs: #0e1015;
+  --ide-status: #4338ca;
+  --ide-status-text: #ffffff;
+  --ide-hover: rgba(255, 255, 255, 0.07);
+  --ide-select: rgba(129, 140, 248, 0.2);
+  --ide-line-hover: rgba(255, 255, 255, 0.035);
+  --ide-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+
+  /* Dark+ */
+  --syn-kw: #569cd6;
+  --syn-str: #ce9178;
+  --syn-com: #6a9955;
+  --syn-type: #4ec9b0;
+  --syn-fn: #dcdcaa;
+  --syn-prop: #9cdcfe;
+  --syn-num: #b5cea8;
+  --syn-link: #6fb3f2;
+  --syn-head: #569cd6;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--ide-title);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app { height: 100vh; height: 100dvh; }
+
+button { font: inherit; color: inherit; }
+a { color: inherit; }
+
+:focus-visible { outline: 1px solid var(--accent); outline-offset: -1px; }
+
+* { scrollbar-width: thin; scrollbar-color: var(--border-light) transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---- icônes de fichiers (glyphes façon "Seti") ---- */
+.ficon {
+  --ic: var(--text-faint);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  flex: none;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--ic);
+}
+:root:not([data-theme='dark']) .ficon { color: color-mix(in srgb, var(--ic) 70%, #000); }
+
+/* ---- coloration syntaxique ---- */
+.tok-kw { color: var(--syn-kw); }
+.tok-str { color: var(--syn-str); }
+.tok-com { color: var(--syn-com); }
+.tok-type { color: var(--syn-type); }
+.tok-fn { color: var(--syn-fn); }
+.tok-prop { color: var(--syn-prop); }
+.tok-num { color: var(--syn-num); }
+.tok-link { color: var(--syn-link); text-decoration: underline; text-underline-offset: 2px; }
+.tok-head { color: var(--syn-head); font-weight: 700; }
+.tok-p { color: var(--text); }
+.code a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---- typographie partagée par les pages "aperçu" ---- */
+.doc { padding: 44px 56px 80px; max-width: 920px; }
+
+.doc .eyebrow {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.doc h1, .doc h2, .doc h3 {
+  font-family: var(--sans);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--text);
+}
+.doc h1 { font-size: clamp(28px, 4.2vw, 44px); margin-bottom: 22px; max-width: 20ch; }
+.doc h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 18px; }
+
+.doc p { font-size: 16.5px; line-height: 1.7; color: var(--text-dim); margin: 0 0 16px; max-width: 72ch; }
+.doc .lead { font-size: 18px; color: var(--text); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme='dark'] .btn.primary { color: #0b0c10; }
+.btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+:root[data-theme='dark'] .btn.primary:hover { color: #0b0c10; }
+
+@media (max-width: 760px) {
+  .doc { padding: 28px 20px 64px; }
+  .doc p { font-size: 16px; }
+}

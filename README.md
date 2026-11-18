@@ -1,40 +1,67 @@
 # Portfolio
 
-Mon portfolio de développeur Junior. Déployé via GitHub Pages et conçu avec Vue 3 + Vite.
+Mon portfolio de développeur Junior, conçu comme un IDE : chaque page du site est un fichier ouvert dans un éditeur de code. Déployé via GitHub Pages et conçu avec Vue 3 + Vite.
 
 ## Structure
 
 ```
 public/
-  favicon.svg                
+  favicon.svg
   cv/                        → CV FR/EN téléchargeables
 
 src/
-  App.vue                    → structure de la page, sections
-  style.css                  
-  i18n.js                    → tous les textes FR/EN
-  main.js
+  main.js                    → point d'entrée, monte l'IDE
+  i18n.js                    → tous les textes FR/EN du contenu
+
+  ide/
+    IdeApp.vue               → la coque de l'IDE : barre de titre, activité, explorateur,
+                               onglets, éditeur, barre d'état, raccourcis clavier
+    content.js               → données localisées + arborescence de fichiers
+    source.js                → génère le "code source" de chaque fichier
+    strings.js               → textes de l'interface de l'IDE (FR/EN)
+    ide.css                  → thèmes clair/sombre, coloration syntaxique, typographie
+
+    components/
+      Explorer.vue           → arborescence de fichiers
+      QuickOpen.vue          → palette Ctrl+P / Ctrl+Maj+P
+      CodeView.vue           → vue "code source" avec numéros de ligne
+      FileIcon.vue           → icônes de fichiers
+
+    pages/                   → une page = un fichier
+      HomePage.vue           → README.md
+      AboutPage.vue          → a-propos.md
+      EducationPage.vue      → formation.json
+      ProjectPage.vue        → CyberQuiz.kt, KineStat.cs, ...
+      SkillsPage.vue         → competences.json
+      ContactPage.vue        → contact.md
+      CvPage.vue             → CV (aperçu PDF)
+      WelcomePage.vue        → écran affiché quand aucun onglet n'est ouvert
 
   components/
-    ProjectShowcase.vue     → les projets : onglets façon éditeur de code
-    ProjectLogo.vue          
-    TechChip.vue             
+    ProjectLogo.vue
+    TechChip.vue
     Lightbox.vue             → visualiseur plein écran des captures
 
   composables/
-    useTheme.js              
-    useLocale.js             
+    useTheme.js
+    useLocale.js
 
   data/
-    projects.js              
-    education.js             
-    skills.js                
-    techIcons.js             
+    projects.js              → ajouter un projet ici l'ajoute aussi dans l'explorateur
+    education.js
+    skills.js
+    techIcons.js
 
   assets/
-    logos/                   
-    screenshots/<projet>/    
+    logos/
+    screenshots/<projet>/
 ```
+
+## Raccourcis
+
+- `Ctrl + P` : ouvrir un fichier
+- `Ctrl + Maj + P` : palette de commandes (thème, langue, CV, GitHub…)
+- `Ctrl + B` : afficher / masquer la barre latérale
 
 ## Faire tourner le projet
 
