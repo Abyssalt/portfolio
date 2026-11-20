@@ -159,9 +159,7 @@ export function buildSource(id, c) {
   if (c.byId.value[id]?.project) return projectSource(c.byId.value[id].project)
 
   switch (id) {
-    case 'readme': {
-      const ui = c.ui.value
-      const live = c.projects.value.filter((p) => p.statuses.some((s) => s.key === 'deployed')).length
+    case 'readme':
       return markdown([
         `> ${t.hero.eyebrow}`,
         '',
@@ -174,22 +172,7 @@ export function buildSource(id, c) {
         `## ${t.about.title}`,
         '',
         t.about.text,
-        '',
-        `- **${ui.homeFacts.education}** : ${t.facts.formationValue}`,
-        `- **${ui.homeFacts.availability}** : ${t.facts.availabilityValue}`,
-        `- **${ui.homeFacts.projects}** : ${ui.projectsFact(c.projects.value.length, live)}`,
-        '',
-        `## ${ui.homeProjects}`,
-        '',
-        ...c.projects.value.map(
-          (p) => `- [${p.name}](#/${p.id}) — ${p.statuses.map((s) => s.label).join(' · ')} · ${p.language}`
-        ),
-        '',
-        `## ${ui.homeStack}`,
-        '',
-        c.skills.value[0].items.join(' · '),
       ])
-    }
     case 'education': {
       const defined = (o) => Object.fromEntries(Object.entries(o).filter(([, v]) => v))
       const data = {

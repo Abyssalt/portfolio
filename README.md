@@ -28,7 +28,7 @@ src/
       FileIcon.vue           → icônes de fichiers
 
     pages/                   → une page = un fichier
-      HomePage.vue           → README.md (accueil + à propos + aperçu des projets et de la stack)
+      HomePage.vue           → README.md (accueil + à propos)
       EducationPage.vue      → formation.json (formation + certifications)
       ProjectPage.vue        → CyberQuiz.kt, KineStat.cs, ...
       SkillsPage.vue         → competences.json
