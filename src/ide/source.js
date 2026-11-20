@@ -159,19 +159,37 @@ export function buildSource(id, c) {
   if (c.byId.value[id]?.project) return projectSource(c.byId.value[id].project)
 
   switch (id) {
-    case 'readme':
+    case 'readme': {
+      const ui = c.ui.value
+      const live = c.projects.value.filter((p) => p.statuses.some((s) => s.key === 'deployed')).length
       return markdown([
         `> ${t.hero.eyebrow}`,
         '',
-        `# ${t.hero.title1}`,
-        `## ${t.hero.title2}`,
+        `# ${t.hero.title1} ${t.hero.title2}`,
         '',
         t.hero.sub,
         '',
         `[${t.hero.ctaProjects}](#/${c.projects.value[0].id}) · [${t.hero.ctaContact}](#/contact) · [${t.hero.ctaResume}](${c.resume.value.url})`,
+        '',
+        `## ${t.about.title}`,
+        '',
+        t.about.text,
+        '',
+        `- **${ui.homeFacts.education}** : ${t.facts.formationValue}`,
+        `- **${ui.homeFacts.availability}** : ${t.facts.availabilityValue}`,
+        `- **${ui.homeFacts.projects}** : ${ui.projectsFact(c.projects.value.length, live)}`,
+        '',
+        `## ${ui.homeProjects}`,
+        '',
+        ...c.projects.value.map(
+          (p) => `- [${p.name}](#/${p.id}) — ${p.statuses.map((s) => s.label).join(' · ')} · ${p.language}`
+        ),
+        '',
+        `## ${ui.homeStack}`,
+        '',
+        c.skills.value[0].items.join(' · '),
       ])
-    case 'about':
-      return markdown([`> ${t.about.eyebrow}`, '', `# ${t.about.title}`, '', t.about.text])
+    }
     case 'education':
       return jsonLines(
         c.education.value.map((e) => ({ period: e.period, degree: e.degree, school: e.school, website: e.website }))

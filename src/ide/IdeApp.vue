@@ -9,7 +9,6 @@ import Explorer from './components/Explorer.vue'
 import CodeView from './components/CodeView.vue'
 import QuickOpen from './components/QuickOpen.vue'
 import HomePage from './pages/HomePage.vue'
-import AboutPage from './pages/AboutPage.vue'
 import EducationPage from './pages/EducationPage.vue'
 import SkillsPage from './pages/SkillsPage.vue'
 import ContactPage from './pages/ContactPage.vue'
@@ -22,7 +21,7 @@ const { locale, toggleLocale } = useLocale()
 const content = useContent()
 const { t, ui, tree, files, byId, resume } = content
 
-const PAGES = { readme: HomePage, about: AboutPage, education: EducationPage, skills: SkillsPage, contact: ContactPage, cv: CvPage }
+const PAGES = { readme: HomePage, education: EducationPage, skills: SkillsPage, contact: ContactPage, cv: CvPage }
 const isMac = /Mac|iPhone|iPad/.test(navigator.platform)
 const mod = isMac ? '⌘' : 'Ctrl'
 

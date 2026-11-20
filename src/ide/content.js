@@ -84,7 +84,6 @@ const tree = computed(() => {
   const f = (id, name, extra) => file(id, name, { path: [root, name], ...extra })
   return [
     f('readme', 'README.md'),
-    f('about', fr.value ? 'a-propos.md' : 'about.md'),
     f('education', fr.value ? 'formation.json' : 'education.json'),
     {
       type: 'folder',
