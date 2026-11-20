@@ -190,10 +190,18 @@ export function buildSource(id, c) {
         c.skills.value[0].items.join(' · '),
       ])
     }
-    case 'education':
-      return jsonLines(
-        c.education.value.map((e) => ({ period: e.period, degree: e.degree, school: e.school, website: e.website }))
-      )
+    case 'education': {
+      const defined = (o) => Object.fromEntries(Object.entries(o).filter(([, v]) => v))
+      const data = {
+        education: c.education.value.map((e) => ({ period: e.period, degree: e.degree, school: e.school, website: e.website })),
+      }
+      if (c.certifications.value.length) {
+        data.certifications = c.certifications.value.map((x) =>
+          defined({ date: x.date, name: x.name, issuer: x.issuer, expires: x.expires, credentialId: x.credentialId, url: x.url })
+        )
+      }
+      return jsonLines(data)
+    }
     case 'skills':
       return jsonLines(Object.fromEntries(c.skills.value.map((g) => [g.key, g.items])))
     case 'contact':

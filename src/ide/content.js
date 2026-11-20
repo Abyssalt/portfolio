@@ -4,6 +4,7 @@ import { translations } from '../i18n'
 import { projects as rawProjects } from '../data/projects'
 import { skillGroups } from '../data/skills'
 import { education as rawEducation } from '../data/education'
+import { certifications as rawCertifications } from '../data/certifications'
 import { ui as uiStrings } from './strings'
 
 export const DISCORD_USERNAME = 'abyssalt_'
@@ -60,6 +61,30 @@ const education = computed(() =>
   }))
 )
 
+// "2025-06" -> "juin 2025" / "June 2025" ; "2025" -> "2025"
+function formatDate(value) {
+  if (!value) return ''
+  const [year, month] = String(value).split('-').map(Number)
+  if (!month) return String(year)
+  return new Date(year, month - 1).toLocaleDateString(fr.value ? 'fr-FR' : 'en-GB', { month: 'long', year: 'numeric' })
+}
+
+// les plus récentes en premier
+const certifications = computed(() =>
+  [...rawCertifications]
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)))
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      issuer: c.issuer,
+      date: formatDate(c.date),
+      expires: formatDate(c.expires),
+      logo: c.logo,
+      url: c.url,
+      credentialId: c.credentialId,
+    }))
+)
+
 const resume = computed(() => {
   const name = fr.value ? 'CV_MelvynPaul_FR.pdf' : 'CV_MelvynPaul_EN.pdf'
   return { name, url: `${import.meta.env.BASE_URL}cv/${name}` }
@@ -104,5 +129,5 @@ const files = computed(() => tree.value.flatMap((n) => (n.type === 'folder' ? n.
 const byId = computed(() => Object.fromEntries(files.value.map((x) => [x.id, x])))
 
 export function useContent() {
-  return { locale, fr, t, ui, projects, skills, education, resume, contactLinks, tree, files, byId }
+  return { locale, fr, t, ui, projects, skills, education, certifications, resume, contactLinks, tree, files, byId }
 }

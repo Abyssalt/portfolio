@@ -31,6 +31,13 @@ export const translations = {
       eyebrow: 'formation',
       title: 'Diplômes & formation',
     },
+    certificationsSection: {
+      eyebrow: 'certifications',
+      title: 'Certifications',
+      expires: 'Valable jusqu’en',
+      credentialId: 'ID',
+      viewCredential: 'Vérifier la certification →',
+    },
     projectsSection: {
       eyebrow: 'projets',
       title: 'Mes contributions...',
@@ -95,6 +102,13 @@ export const translations = {
     formationSection: {
       eyebrow: 'education',
       title: 'Degrees & education',
+    },
+    certificationsSection: {
+      eyebrow: 'certifications',
+      title: 'Certifications',
+      expires: 'Valid until',
+      credentialId: 'ID',
+      viewCredential: 'Verify the certification →',
     },
     projectsSection: {
       eyebrow: 'projects',

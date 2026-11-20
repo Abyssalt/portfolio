@@ -29,7 +29,7 @@ src/
 
     pages/                   → une page = un fichier
       HomePage.vue           → README.md (accueil + à propos + aperçu des projets et de la stack)
-      EducationPage.vue      → formation.json
+      EducationPage.vue      → formation.json (formation + certifications)
       ProjectPage.vue        → CyberQuiz.kt, KineStat.cs, ...
       SkillsPage.vue         → competences.json
       ContactPage.vue        → contact.md
@@ -48,6 +48,7 @@ src/
   data/
     projects.js              → ajouter un projet ici l'ajoute aussi dans l'explorateur
     education.js
+    certifications.js        → mes certifications (logo, date, lien…) : à compléter
     skills.js
     techIcons.js
 
